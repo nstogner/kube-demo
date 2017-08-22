@@ -1,5 +1,12 @@
 # Kubernetes Demo
 
+Requirements:
+
+- [Kubectl - kubernetes cli](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [Minikube - to run kubernetes locally](https://github.com/kubernetes/minikube#installation) (which requires [VirtualBox or similar](https://github.com/kubernetes/minikube#requirements))
+- [Docker](https://docs.docker.com/engine/installation/)
+- [Go](https://golang.org/doc/install)
+
 ```sh
 # Start a kubernetes cluster running on a local VM
 minikube start --kubernetes-version v1.6.4
