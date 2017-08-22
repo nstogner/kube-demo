@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: kube-demo
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: kube-demo-app
+    spec:
+      containers:
+      - name: app
+        image: kube-demo-img:v1
+        imagePullPolicy: IfNotPresent
+        command:
+        - /go/bin/kube-demo
+        ports:
+        - containerPort: 8080
+        env:
+        - name: GREETING
+          value: "Hello demo!"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-demo
+  labels:
+    foo: bar
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: kube-demo-app
